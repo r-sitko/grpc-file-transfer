@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+service File {
+  rpc download(FileDownloadReq) returns (stream FileDownloadRsp) {}
+  rpc list(ListReq) returns (stream ListRsp) {}
+}
+
+message FileDownloadRsp {
+  bytes buffer = 1;
+}
+
+message FileDownloadReq {
+  string name = 1;
+}
+
+message ListReq {
+}
+
+message ListRsp {
+  string name = 1;
+  int64 size = 2;
+}
